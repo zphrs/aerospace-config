@@ -5,12 +5,12 @@
 # You may check the current default at
 #   https://github.com/Canop/bacon/blob/main/defaults/default-bacon.toml
 
-default_job          = "check"
+default_job          = "run"
 env.CARGO_TERM_COLOR = "always"
 
 
 [jobs.check]
-    command     = ["nickel", "eval", "config.ncl"]
+    command     = ["nickel", "eval", "src/config.ncl", "--color", "always"]
     need_stdout = false
     watch       = ["*.ncl"]
 
@@ -33,16 +33,10 @@ env.CARGO_TERM_COLOR = "always"
 # if it makes sense for this crate.
 [jobs.run]
     command = [
-        "nickel",
-        "export",
-        "src/config.ncl",
-        "--format",
-        "toml",
-        "--output",
-        "aerospace.toml",
+        "sh",
+        "./export-config.sh",
         # put launch parameters for your program behind a `--` separator
     ]
-    watch = ["schema.ncl"]
 
     need_stdout    = true
     allow_warnings = false

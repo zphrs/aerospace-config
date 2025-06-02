@@ -52,10 +52,10 @@ let Zones
           'Ok
         else
           'Error {
-            message = "Key '%{k}' cannot be used as a zone shortcut because it is also used as a direction",
+            message = "Key '%{k}' cannot be used as a zone shortcut key because it is also used as a direction",
             notes = [
-              "All of the direction keys: [%{std.string.join ", " directionKeys}]",
-              "Zone shortcuts and direction keys cannot conflict due to the `rearrange` mode"
+              "The direction shortcut keys: [%{std.string.join ", " directionKeys}]",
+              "Zone shortcuts and direction keys cannot conflict due to the `rearrange` mode."
             ]
           }
       )
