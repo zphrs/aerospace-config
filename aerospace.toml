@@ -1,0 +1,350 @@
+accordion-padding = 24
+after-login-command = []
+after-startup-command = []
+automatically-unhide-macos-hidden-apps = false
+default-root-container-layout = "accordion"
+default-root-container-orientation = "auto"
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+on-focused-monitor-changed = ["move-mouse monitor-lazy-center"]
+start-at-login = true
+
+[gaps.inner]
+horizontal = 6
+vertical = 6
+
+[gaps.outer]
+bottom = 2
+left = 2
+right = 2
+top = 0
+
+[key-mapping]
+preset = "qwerty"
+
+[mode.apps.binding]
+d = [
+    "workspace Discord",
+    "exec-and-forget open -a Discord",
+    "mode main",
+]
+esc = "mode main"
+h = [
+    "workspace pHotos",
+    "exec-and-forget open -a pHotos",
+    "mode main",
+]
+m = [
+    "workspace Music",
+    "exec-and-forget open -a Music",
+    "mode main",
+]
+n = [
+    "workspace Notes",
+    "exec-and-forget open -a Notes",
+    "mode main",
+]
+o = [
+    "workspace pOdman",
+    "exec-and-forget open -a pOdman",
+    "mode main",
+]
+p = [
+    "workspace Passwords",
+    "exec-and-forget open -a Passwords",
+    "mode main",
+]
+s = [
+    "workspace Signal",
+    "exec-and-forget open -a Signal",
+    "mode main",
+]
+
+[mode.join.binding]
+d = [
+    "resize width 330",
+    "resize height 340",
+    "mode main",
+]
+esc = ["mode main"]
+h = [
+    "join-with left",
+    "mode main",
+]
+j = [
+    "join-with down",
+    "mode main",
+]
+k = [
+    "join-with up",
+    "mode main",
+]
+l = [
+    "join-with right",
+    "mode main",
+]
+
+[mode.main.binding]
+alt-a = "mode apps"
+alt-comma = "layout accordion horizontal vertical"
+alt-enter = ["exec-and-forget open -na Alacritty"]
+alt-equal = "resize smart +50"
+alt-esc = "reload-config"
+alt-f = "layout floating tiling"
+alt-h = "focus left  --boundaries-action wrap-around-the-workspace --ignore-floating"
+alt-j = "focus down  --boundaries-action wrap-around-the-workspace --ignore-floating"
+alt-k = "focus up    --boundaries-action wrap-around-the-workspace --ignore-floating"
+alt-l = "focus right --boundaries-action wrap-around-the-workspace --ignore-floating"
+alt-minus = "resize smart -50"
+alt-period = "mode zones"
+alt-r = "mode resize"
+alt-shift-j = "mode join"
+alt-shift-period = "mode rearrange"
+alt-shift-r = "flatten-workspace-tree"
+alt-shift-tab = "workspace-back-and-forth"
+alt-slash = "layout tiles horizontal vertical"
+
+[mode.rearrange.binding]
+0 = "move-node-to-workspace S0"
+1 = "move-node-to-workspace S1"
+2 = "move-node-to-workspace S2"
+3 = "move-node-to-workspace S3"
+4 = "move-node-to-workspace S4"
+5 = "move-node-to-workspace S5"
+6 = "move-node-to-workspace S6"
+7 = "move-node-to-workspace S7"
+8 = "move-node-to-workspace S8"
+alt-h = "move left"
+alt-j = "move down"
+alt-k = "move up"
+alt-l = "move right"
+d = "move-node-to-workspace Dev"
+esc = "mode main"
+h = "focus left  --boundaries-action wrap-around-the-workspace"
+j = "focus down  --boundaries-action wrap-around-the-workspace"
+k = "focus up    --boundaries-action wrap-around-the-workspace"
+l = "focus right --boundaries-action wrap-around-the-workspace"
+p = "move-node-to-workspace Personal"
+s = "move-node-to-workspace School"
+x = "move-node-to-workspace pleXigraph"
+
+[mode.resize.binding]
+esc = "mode main"
+h = "resize width +50"
+j = "resize height +50"
+k = "resize height -50"
+l = "resize width -50"
+
+[mode.zones.binding]
+0 = [
+    "workspace S0",
+    "mode main",
+]
+1 = [
+    "workspace S1",
+    "mode main",
+]
+2 = [
+    "workspace S2",
+    "mode main",
+]
+3 = [
+    "workspace S3",
+    "mode main",
+]
+4 = [
+    "workspace S4",
+    "mode main",
+]
+5 = [
+    "workspace S5",
+    "mode main",
+]
+6 = [
+    "workspace S6",
+    "mode main",
+]
+7 = [
+    "workspace S7",
+    "mode main",
+]
+8 = [
+    "workspace S8",
+    "mode main",
+]
+alt-0 = [
+    "move-node-to-workspace S0",
+    "workspace S0",
+    "mode main",
+]
+alt-1 = [
+    "move-node-to-workspace S1",
+    "workspace S1",
+    "mode main",
+]
+alt-2 = [
+    "move-node-to-workspace S2",
+    "workspace S2",
+    "mode main",
+]
+alt-3 = [
+    "move-node-to-workspace S3",
+    "workspace S3",
+    "mode main",
+]
+alt-4 = [
+    "move-node-to-workspace S4",
+    "workspace S4",
+    "mode main",
+]
+alt-5 = [
+    "move-node-to-workspace S5",
+    "workspace S5",
+    "mode main",
+]
+alt-6 = [
+    "move-node-to-workspace S6",
+    "workspace S6",
+    "mode main",
+]
+alt-7 = [
+    "move-node-to-workspace S7",
+    "workspace S7",
+    "mode main",
+]
+alt-8 = [
+    "move-node-to-workspace S8",
+    "workspace S8",
+    "mode main",
+]
+alt-d = [
+    "move-node-to-workspace Dev",
+    "workspace Dev",
+    "mode main",
+]
+alt-p = [
+    "move-node-to-workspace Personal",
+    "workspace Personal",
+    "mode main",
+]
+alt-s = [
+    "move-node-to-workspace School",
+    "workspace School",
+    "mode main",
+]
+alt-x = [
+    "move-node-to-workspace pleXigraph",
+    "workspace pleXigraph",
+    "mode main",
+]
+d = [
+    "workspace Dev",
+    "mode main",
+]
+esc = "mode main"
+p = [
+    "workspace Personal",
+    "mode main",
+]
+s = [
+    "workspace School",
+    "mode main",
+]
+x = [
+    "workspace pleXigraph",
+    "mode main",
+]
+
+[[on-window-detected]]
+run = ["layout floating"]
+
+[on-window-detected.if]
+app-name-regex-substring = "Alacritty"
+
+[[on-window-detected]]
+run = ["layout floating"]
+
+[on-window-detected.if]
+app-name-regex-substring = "Messages"
+
+[[on-window-detected]]
+run = ["layout floating"]
+
+[on-window-detected.if]
+app-name-regex-substring = "Mail"
+
+[[on-window-detected]]
+run = ["layout floating"]
+
+[on-window-detected.if]
+app-name-regex-substring = "Reminders"
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = [
+    "layout floating",
+    "move-node-to-workspace Discord",
+]
+
+[on-window-detected.if]
+app-name-regex-substring = "Discord"
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = [
+    "layout floating",
+    "move-node-to-workspace pHotos",
+]
+
+[on-window-detected.if]
+app-name-regex-substring = "pHotos"
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = [
+    "layout floating",
+    "move-node-to-workspace Music",
+]
+
+[on-window-detected.if]
+app-name-regex-substring = "Music"
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = [
+    "layout floating",
+    "move-node-to-workspace Notes",
+]
+
+[on-window-detected.if]
+app-name-regex-substring = "Notes"
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = [
+    "layout floating",
+    "move-node-to-workspace pOdman",
+]
+
+[on-window-detected.if]
+app-name-regex-substring = "pOdman"
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = [
+    "layout floating",
+    "move-node-to-workspace Passwords",
+]
+
+[on-window-detected.if]
+app-name-regex-substring = "Passwords"
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = [
+    "layout floating",
+    "move-node-to-workspace Signal",
+]
+
+[on-window-detected.if]
+app-name-regex-substring = "Signal"

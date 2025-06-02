@@ -1,0 +1,49 @@
+# This is a configuration file for the bacon tool
+#
+# Complete help on configuration: https://dystroy.org/bacon/config/
+# 
+# You may check the current default at
+#   https://github.com/Canop/bacon/blob/main/defaults/default-bacon.toml
+
+default_job          = "check"
+env.CARGO_TERM_COLOR = "always"
+
+
+[jobs.check]
+    command     = ["nickel", "eval", "config.ncl"]
+    need_stdout = false
+    watch       = ["*.ncl"]
+
+
+    # Run clippy on all targets
+    # To disable some lints, you may change the job this way:
+    #    [jobs.clippy-all]
+    #    command = [
+    #        "cargo", "clippy",
+    #        "--all-targets",
+    #    	 "--",
+    #    	 "-A", "clippy::bool_to_int_with_if",
+    #    	 "-A", "clippy::collapsible_if",
+    #    	 "-A", "clippy::derive_partial_eq_without_eq",
+    #    ]
+    # need_stdout = false
+
+
+# You can run your application and have the result displayed in bacon,
+# if it makes sense for this crate.
+[jobs.run]
+    command = [
+        "nickel",
+        "export",
+        "src/config.ncl",
+        "--format",
+        "toml",
+        "--output",
+        "aerospace.toml",
+        # put launch parameters for your program behind a `--` separator
+    ]
+    watch = ["schema.ncl"]
+
+    need_stdout    = true
+    allow_warnings = false
+    background     = true
