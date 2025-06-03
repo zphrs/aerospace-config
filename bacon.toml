@@ -9,10 +9,9 @@ default_job          = "run"
 env.CARGO_TERM_COLOR = "always"
 
 
-[jobs.check]
-    command     = ["nickel", "eval", "src/config.ncl", "--color", "always"]
-    need_stdout = false
-    watch       = ["*.ncl"]
+[jobs.check-all]
+    command     = ["sh", "./check-config.sh"]
+    need_stdout = true
 
 
     # Run clippy on all targets

@@ -1,2 +1,2 @@
 nickel export src/config.ncl --format toml --output aerospace.toml --color always && 
-aerospace reload-config --no-gui
+aerospace reload-config --no-gui --dry-run
