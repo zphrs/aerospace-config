@@ -1,4 +1,4 @@
-accordion-padding = 24
+accordion-padding = 48
 after-login-command = []
 after-startup-command = []
 automatically-unhide-macos-hidden-apps = false
@@ -14,10 +14,10 @@ horizontal = 6
 vertical = 6
 
 [gaps.outer]
-bottom = 2
-left = 2
-right = 2
-top = 0
+bottom = 12
+left = 12
+right = 12
+top = 6
 
 [key-mapping]
 preset = "qwerty"
@@ -59,6 +59,11 @@ s = [
     "exec-and-forget open -a Signal",
     "mode main",
 ]
+t = [
+    "workspace Tv",
+    "exec-and-forget open -a Tv",
+    "mode main",
+]
 
 [mode.join.binding]
 d = [
@@ -86,20 +91,24 @@ l = [
 
 [mode.main.binding]
 alt-a = "mode apps"
+alt-b = [
+    "layout tiles",
+    "balance-sizes",
+]
 alt-comma = "layout accordion horizontal vertical"
 alt-enter = ["exec-and-forget open -na Alacritty"]
 alt-equal = "resize smart +50"
 alt-esc = "reload-config"
 alt-f = "layout floating tiling"
 alt-h = "focus left  --boundaries-action wrap-around-the-workspace --ignore-floating"
-alt-j = "focus down  --boundaries-action wrap-around-the-workspace --ignore-floating"
-alt-k = "focus up    --boundaries-action wrap-around-the-workspace --ignore-floating"
-alt-l = "focus right --boundaries-action wrap-around-the-workspace --ignore-floating"
+alt-j = "focus up  --boundaries-action wrap-around-the-workspace --ignore-floating"
+alt-k = "focus down  --boundaries-action wrap-around-the-workspace --ignore-floating"
+alt-l = "focus right  --boundaries-action wrap-around-the-workspace --ignore-floating"
 alt-minus = "resize smart -50"
 alt-period = "mode zones"
-alt-r = "mode resize"
+alt-r = "mode rearrange"
+alt-shift-f = "fullscreen --no-outer-gaps"
 alt-shift-j = "mode join"
-alt-shift-period = "mode rearrange"
 alt-shift-r = "flatten-workspace-tree"
 alt-shift-tab = "workspace-back-and-forth"
 alt-slash = "layout tiles horizontal vertical"
@@ -114,11 +123,78 @@ alt-slash = "layout tiles horizontal vertical"
 6 = "move-node-to-workspace S6"
 7 = "move-node-to-workspace S7"
 8 = "move-node-to-workspace S8"
+alt-0 = [
+    "move-node-to-workspace S0",
+    "workspace S0",
+    "mode main",
+]
+alt-1 = [
+    "move-node-to-workspace S1",
+    "workspace S1",
+    "mode main",
+]
+alt-2 = [
+    "move-node-to-workspace S2",
+    "workspace S2",
+    "mode main",
+]
+alt-3 = [
+    "move-node-to-workspace S3",
+    "workspace S3",
+    "mode main",
+]
+alt-4 = [
+    "move-node-to-workspace S4",
+    "workspace S4",
+    "mode main",
+]
+alt-5 = [
+    "move-node-to-workspace S5",
+    "workspace S5",
+    "mode main",
+]
+alt-6 = [
+    "move-node-to-workspace S6",
+    "workspace S6",
+    "mode main",
+]
+alt-7 = [
+    "move-node-to-workspace S7",
+    "workspace S7",
+    "mode main",
+]
+alt-8 = [
+    "move-node-to-workspace S8",
+    "workspace S8",
+    "mode main",
+]
+alt-d = [
+    "move-node-to-workspace Dev",
+    "workspace Dev",
+    "mode main",
+]
 alt-h = "move left"
 alt-j = "move down"
 alt-k = "move up"
 alt-l = "move right"
+alt-p = [
+    "move-node-to-workspace Personal",
+    "workspace Personal",
+    "mode main",
+]
+alt-s = [
+    "move-node-to-workspace School",
+    "workspace School",
+    "mode main",
+]
+alt-x = [
+    "move-node-to-workspace pleXigraph",
+    "workspace pleXigraph",
+    "mode main",
+]
+comma = "layout accordion horizontal vertical"
 d = "move-node-to-workspace Dev"
+down = "resize smart -50"
 esc = "mode main"
 h = "focus left  --boundaries-action wrap-around-the-workspace"
 j = "focus down  --boundaries-action wrap-around-the-workspace"
@@ -126,14 +202,63 @@ k = "focus up    --boundaries-action wrap-around-the-workspace"
 l = "focus right --boundaries-action wrap-around-the-workspace"
 p = "move-node-to-workspace Personal"
 s = "move-node-to-workspace School"
+shift-0 = [
+    "move-node-to-workspace S0",
+    "mode main",
+]
+shift-1 = [
+    "move-node-to-workspace S1",
+    "mode main",
+]
+shift-2 = [
+    "move-node-to-workspace S2",
+    "mode main",
+]
+shift-3 = [
+    "move-node-to-workspace S3",
+    "mode main",
+]
+shift-4 = [
+    "move-node-to-workspace S4",
+    "mode main",
+]
+shift-5 = [
+    "move-node-to-workspace S5",
+    "mode main",
+]
+shift-6 = [
+    "move-node-to-workspace S6",
+    "mode main",
+]
+shift-7 = [
+    "move-node-to-workspace S7",
+    "mode main",
+]
+shift-8 = [
+    "move-node-to-workspace S8",
+    "mode main",
+]
+shift-d = [
+    "move-node-to-workspace Dev",
+    "mode main",
+]
+shift-down = "resize smart-opposite +50"
+shift-p = [
+    "move-node-to-workspace Personal",
+    "mode main",
+]
+shift-s = [
+    "move-node-to-workspace School",
+    "mode main",
+]
+shift-up = "resize smart-opposite -50"
+shift-x = [
+    "move-node-to-workspace pleXigraph",
+    "mode main",
+]
+slash = "layout tiles horizontal vertical"
+up = "resize smart +50"
 x = "move-node-to-workspace pleXigraph"
-
-[mode.resize.binding]
-esc = "mode main"
-h = "resize width +50"
-j = "resize height +50"
-k = "resize height -50"
-l = "resize width -50"
 
 [mode.zones.binding]
 0 = [
@@ -280,6 +405,18 @@ run = ["layout floating"]
 app-name-regex-substring = "Reminders"
 
 [[on-window-detected]]
+run = ["layout floating"]
+
+[on-window-detected.if]
+app-name-regex-substring = "FaceTime"
+
+[[on-window-detected]]
+run = ["layout floating"]
+
+[on-window-detected.if]
+app-name-regex-substring = "Weather"
+
+[[on-window-detected]]
 check-further-callbacks = true
 run = [
     "layout floating",
@@ -348,3 +485,13 @@ run = [
 
 [on-window-detected.if]
 app-name-regex-substring = "Signal"
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = [
+    "layout floating",
+    "move-node-to-workspace Tv",
+]
+
+[on-window-detected.if]
+app-name-regex-substring = "Tv"

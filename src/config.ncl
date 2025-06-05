@@ -7,7 +7,9 @@ let FloatingApps = [
   "Alacritty",
   "Messages",
   "Mail",
-  "Reminders"
+  "Reminders",
+  "FaceTime",
+  "Weather"
 ]
 in
 
@@ -31,6 +33,7 @@ let AppSpaces = {
   p = "Passwords",
   h = "pHotos",
   o = "pOdman",
+  t = "Tv"
 }
 in
 
@@ -107,7 +110,7 @@ in
   enable-normalization-flatten-containers = true,
   enable-normalization-opposite-orientation-for-nested-containers = true,
 
-  accordion-padding = 24,
+  accordion-padding = 48,
   default-root-container-layout = "accordion",
   default-root-container-orientation = "auto",
 
@@ -122,44 +125,49 @@ in
   gaps = {
     inner.horizontal = 6,
     inner.vertical = 6,
-    outer.left = 2,
-    outer.bottom = 2,
-    outer.top = 0,
-    outer.right = 2,
+    outer.left = 12,
+    outer.bottom = 12,
+    outer.top = 6,
+    outer.right = 12,
   },
 
   mode = {
     main = {
-      binding = {
-        alt-enter = ["exec-and-forget open -na Alacritty"],
-        alt-slash = "layout tiles horizontal vertical",
-        alt-comma = "layout accordion horizontal vertical",
-        alt-f = "layout floating tiling",
-        alt-esc = "reload-config",
-        alt-r = "mode resize",
-        alt-shift-r = "flatten-workspace-tree",
-        alt-h = "focus left  --boundaries-action wrap-around-the-workspace --ignore-floating",
-        alt-j = "focus down  --boundaries-action wrap-around-the-workspace --ignore-floating",
-        alt-k = "focus up    --boundaries-action wrap-around-the-workspace --ignore-floating",
-        alt-l = "focus right --boundaries-action wrap-around-the-workspace --ignore-floating",
-        alt-minus = "resize smart -50",
-        alt-equal = "resize smart +50",
-        alt-a = "mode apps",
-        alt-period = "mode zones",
-        alt-shift-period = "mode rearrange",
-        alt-shift-tab = "workspace-back-and-forth",
-        alt-shift-j = "mode join",
-      }
+      binding =
+        {
+          alt-shift-f = "fullscreen --no-outer-gaps",
+          alt-enter = ["exec-and-forget open -na Alacritty"],
+          alt-slash = "layout tiles horizontal vertical",
+          alt-comma = "layout accordion horizontal vertical",
+          alt-f = "layout floating tiling",
+          alt-esc = "reload-config",
+          alt-shift-r = "flatten-workspace-tree",
+          alt-b = ["layout tiles", "balance-sizes"],
+        }
+        & (
+          std.record.to_array DirectionMapping
+          |> std.array.map (fun x =>
+            {
+              field = "alt-%{x.value}",
+              value = "focus %{x.field}  --boundaries-action wrap-around-the-workspace --ignore-floating"
+            }
+          )
+          |> std.record.from_array
+        )
+        & {
+          alt-minus = "resize smart -50",
+          alt-equal = "resize smart +50",
+        }
+        & {
+          alt-a = "mode apps",
+          alt-period = "mode zones",
+          alt-r = "mode rearrange",
+          alt-shift-j = "mode join",
+        }
+        & {
+          alt-shift-tab = "workspace-back-and-forth",
+        }
     },
-
-    resize.binding =
-      {
-        h = "resize width +50",
-        j = "resize height +50",
-        k = "resize height -50",
-        l = "resize width -50",
-      }
-      & ExitMode,
 
     zones.binding =
       (
@@ -184,15 +192,49 @@ in
         Zones
         |> std.record.map (fun k v => "move-node-to-workspace %{v}")
       )
+      & (
+        Zones
+        |> std.record.to_array
+        |> std.array.map (fun { field = f, value = v } =>
+          {
+            field = "shift-%{f}",
+            value = ["move-node-to-workspace %{v}", "mode main"]
+          }
+        )
+        |> std.record.from_array
+      )
+      & (
+        Zones
+        |> std.record.to_array
+        |> std.array.map (fun { field = f, value = v } =>
+          {
+            field = "alt-%{f}",
+            value = ["move-node-to-workspace %{v}", "workspace %{v}", "mode main"]
+          }
+        )
+        |> std.record.from_array
+      )
       & {
         h = "focus left  --boundaries-action wrap-around-the-workspace",
         j = "focus down  --boundaries-action wrap-around-the-workspace",
         k = "focus up    --boundaries-action wrap-around-the-workspace",
         l = "focus right --boundaries-action wrap-around-the-workspace",
+      }
+      & {
         alt-h = "move left",
         alt-j = "move down",
         alt-k = "move up",
         alt-l = "move right",
+      }
+      & {
+        slash = "layout tiles horizontal vertical",
+        comma = "layout accordion horizontal vertical",
+      }
+      & {
+        up = "resize smart +50",
+        down = "resize smart -50",
+        shift-up = "resize smart-opposite -50",
+        shift-down = "resize smart-opposite +50",
       }
       & ExitMode,
 
