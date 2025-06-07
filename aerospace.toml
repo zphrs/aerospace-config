@@ -417,6 +417,12 @@ run = ["layout floating"]
 app-name-regex-substring = "Weather"
 
 [[on-window-detected]]
+run = ["layout floating"]
+
+[on-window-detected.if]
+app-name-regex-substring = "Clock"
+
+[[on-window-detected]]
 check-further-callbacks = true
 run = [
     "layout floating",

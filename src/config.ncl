@@ -9,7 +9,8 @@ let FloatingApps = [
   "Mail",
   "Reminders",
   "FaceTime",
-  "Weather"
+  "Weather",
+  "Clock"
 ]
 in
 
