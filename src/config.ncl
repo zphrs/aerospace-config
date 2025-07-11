@@ -10,7 +10,8 @@ let FloatingApps = [
   "Reminders",
   "FaceTime",
   "Weather",
-  "Clock"
+  "Clock",
+  "Simulator"
 ]
 in
 
@@ -77,7 +78,7 @@ let Zones
   )
   =
     (
-      std.array.range 0 9
+      std.array.range 0 10
       |> (
         std.array.map (fun n =>
           { field = "%{n}", value = "S%{n}" }
@@ -101,11 +102,6 @@ in
   # Available commands: https://nikitabobko.github.io/AeroSpace/commands
   after-login-command = [],
 
-  # You can use it to add commands that run after AeroSpace startup.
-  # "after-startup-command" is run after "after-login-command"
-  # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-  after-startup-command = [],
-
   start-at-login = true,
 
   enable-normalization-flatten-containers = true,
@@ -114,6 +110,18 @@ in
   accordion-padding = 48,
   default-root-container-layout = "accordion",
   default-root-container-orientation = "auto",
+
+  # Run Sketchybar together with AeroSpace
+  # sketchbar has a built-in detection of already running process,
+  # so it won't be run twice on AeroSpace restart
+  after-startup-command = ["exec-and-forget sketchybar"],
+
+  # Notify Sketchybar about workspace change
+  exec-on-workspace-change = [
+    "/bin/bash",
+    "-c",
+    "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+  ],
 
   on-focused-monitor-changed = ["move-mouse monitor-lazy-center"],
 
@@ -126,10 +134,10 @@ in
   gaps = {
     inner.horizontal = 6,
     inner.vertical = 6,
-    outer.left = 12,
-    outer.bottom = 12,
-    outer.top = 6,
-    outer.right = 12,
+    outer.left = 6,
+    outer.bottom = 6,
+    outer.top = [{ monitor."built-in" = 6 }, 40],
+    outer.right = 6,
   },
 
   mode = {

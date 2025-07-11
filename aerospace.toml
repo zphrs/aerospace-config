@@ -1,11 +1,16 @@
 accordion-padding = 48
 after-login-command = []
-after-startup-command = []
+after-startup-command = ["exec-and-forget sketchybar"]
 automatically-unhide-macos-hidden-apps = false
 default-root-container-layout = "accordion"
 default-root-container-orientation = "auto"
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
+exec-on-workspace-change = [
+    "/bin/bash",
+    "-c",
+    "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE",
+]
 on-focused-monitor-changed = ["move-mouse monitor-lazy-center"]
 start-at-login = true
 
@@ -14,10 +19,13 @@ horizontal = 6
 vertical = 6
 
 [gaps.outer]
-bottom = 12
-left = 12
-right = 12
-top = 6
+bottom = 6
+left = 6
+right = 6
+top = [
+    { monitor = { built-in = 6 } },
+    40,
+]
 
 [key-mapping]
 preset = "qwerty"
@@ -123,6 +131,7 @@ alt-slash = "layout tiles horizontal vertical"
 6 = "move-node-to-workspace S6"
 7 = "move-node-to-workspace S7"
 8 = "move-node-to-workspace S8"
+9 = "move-node-to-workspace S9"
 alt-0 = [
     "move-node-to-workspace S0",
     "workspace S0",
@@ -166,6 +175,11 @@ alt-7 = [
 alt-8 = [
     "move-node-to-workspace S8",
     "workspace S8",
+    "mode main",
+]
+alt-9 = [
+    "move-node-to-workspace S9",
+    "workspace S9",
     "mode main",
 ]
 alt-d = [
@@ -238,6 +252,10 @@ shift-8 = [
     "move-node-to-workspace S8",
     "mode main",
 ]
+shift-9 = [
+    "move-node-to-workspace S9",
+    "mode main",
+]
 shift-d = [
     "move-node-to-workspace Dev",
     "mode main",
@@ -297,6 +315,10 @@ x = "move-node-to-workspace pleXigraph"
     "workspace S8",
     "mode main",
 ]
+9 = [
+    "workspace S9",
+    "mode main",
+]
 alt-0 = [
     "move-node-to-workspace S0",
     "workspace S0",
@@ -340,6 +362,11 @@ alt-7 = [
 alt-8 = [
     "move-node-to-workspace S8",
     "workspace S8",
+    "mode main",
+]
+alt-9 = [
+    "move-node-to-workspace S9",
+    "workspace S9",
     "mode main",
 ]
 alt-d = [
@@ -421,6 +448,12 @@ run = ["layout floating"]
 
 [on-window-detected.if]
 app-name-regex-substring = "Clock"
+
+[[on-window-detected]]
+run = ["layout floating"]
+
+[on-window-detected.if]
+app-name-regex-substring = "Simulator"
 
 [[on-window-detected]]
 check-further-callbacks = true
